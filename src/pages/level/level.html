@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        Level & Topic
+      </ion-title>
+      <ion-buttons start>
+          <button ion-button color="dark" icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button></ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content style="background-color:gainsboro;
+
+" padding>
+      <h2>Choose a level</h2>
+      <ion-list radio-group [(ngModel)]="level">
+  <ion-item>
+    <ion-label>Simple</ion-label>
+    <ion-radio color="secondary"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Meduim</ion-label>
+    <ion-radio value="meduim" color="secondary"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Hard</ion-label>
+    <ion-radio value="hard" color="secondary"></ion-radio>
+  </ion-item>
+</ion-list>
+
+
+  </ion-content>
+  

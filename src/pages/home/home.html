@@ -1,14 +1,35 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+     GUESS GAME
     </ion-title>
+    <ion-buttons start>
+        <button ion-button color="dark" icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button></ion-buttons>
   </ion-navbar>
 </ion-header>
+<ion-content style="background-image: url('../../assets/imgs/homePageBG1.jpg');
+                    background-attachment: fixed; 
+                    background-size: contain;
+                    background-position : center;
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+">
+<ion-fab left top>
+    <button ion-fab color="secondary" id="socialMedia"><ion-icon name="arrow-dropright"></ion-icon></button>
+    <ion-fab-list side="right">
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+    <ion-buttons>
+        <button ion-button round color="secondary" [navPush]="levelPage" id="cool-button-div">
+            &nbsp;       
+        START GAME
+        </button>
+    
+      </ion-buttons>
 </ion-content>
+

@@ -1,15 +1,12 @@
-import { LevelPage } from './../level/level';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-level',
+  templateUrl: 'level.html'
 })
-export class HomePage {
+export class LevelPage {
 
-  levelPage = LevelPage;
   constructor(public navCtrl: NavController) {
 
   }
