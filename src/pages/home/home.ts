@@ -1,7 +1,7 @@
+import { TopicsPage } from './../topics/topics';
 import { LevelPage } from './../level/level';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 
 @Component({
   selector: 'page-home',
@@ -13,7 +13,7 @@ export class HomePage {
 
   }
   openPage(){
-    this.navCtrl.push(LevelPage);
+    this.navCtrl.push(TopicsPage);
   }
 
 }

@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar color="dark">
       <ion-title>
-       GUESS GAME
+       YOUR TOPIC : {{ topic }}
       </ion-title>
       <ion-buttons start>
           <button ion-button color="dark" icon-only menuToggle>
@@ -9,15 +9,18 @@
           </button></ion-buttons>
     </ion-navbar>
   </ion-header>
-  <ion-content style="background-image: url('assets/imgs/BGG.jpg');
+  <ion-content style="background-image: url('assets/imgs/SBG6.jpg');
                       background-attachment: fixed; 
                       background-size: contain;
                       background-position : center;" padding>
   <ion-label>
-    <h5>&nbsp;<b>Level</b> : {{ level }} <br/>&nbsp;<b>Topic</b> : {{ topic }}</h5>
+    <h4>
+      <b>TOPIC</b> : {{ topic }}<br/>
+      <b>SCORE</b> : {{ topic }}<br/>
+    </h4>
   </ion-label>     
-  <ion-slides >
-    <ion-slide *ngFor="let item of items">
+  <ion-slides paginationType="fraction" pager>
+    <ion-slide *ngFor="let item of items ">
       <page-slid [imagePath]="item.image" [word]="item.word"></page-slid>
     </ion-slide>
   </ion-slides>

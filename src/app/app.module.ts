@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LevelPage } from '../pages/level/level';
 import { SlidPage } from './../pages/slid/slid';
+import { TopicsPage } from '../pages/topics/topics';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SlidPage } from './../pages/slid/slid';
     HomePage,
     LevelPage,
     ProgressPage,
-    SlidPage
+    SlidPage,
+    TopicsPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { SlidPage } from './../pages/slid/slid';
     HomePage,
     LevelPage,
     ProgressPage,
-    SlidPage
+    SlidPage,
+    TopicsPage
   ],
   providers: [
     StatusBar,

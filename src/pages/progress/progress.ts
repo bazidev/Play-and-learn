@@ -19,25 +19,54 @@ export class ProgressPage {
   items    : any[];
   matches  : String[];
   isRecording = false;
-
+  currentItems:string[];
+  
   constructor(public navCtrl: NavController , public navParams:NavParams ,private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) {
     this.topic =this.navParams.get('topic');
-    this.level =this.navParams.get('level');
+    console.log(this.topic);
+
     this.items = [
       {
-        word: 'penguin',
-        image: 'assets/imgs/adult/easy/penguin.png',
-      },
-      {
-        word: 'chicken',
-        image: 'assets/imgs/adult/easy/chicken.jpg',
-         },
-      {
-        word: 'penguin',
-        image: 'assets/imgs/adult/easy/mouse.png',
+        topic:"animals",
+        data:[
+          {
+          word: 'penguin',
+          image: 'assets/imgs/adult/easy/penguin.png',
+        },
+        {
+          word: 'chicken',
+          image: 'assets/imgs/adult/easy/chicken.jpg',
+           },
+        {
+          word: 'penguin',
+          image: 'assets/imgs/adult/easy/mouse.png',
+        }
+      ]
       }
-    ];
+,{
+  topic:"number",
+  data:[
+    {
+    word: 'penguin',
+    image: 'assets/imgs/adult/easy/penguin.png',
+  },
+  {
+    word: 'chicken',
+    image: 'assets/imgs/adult/easy/chicken.jpg',
+     },
+  {
+    word: 'penguin',
+    image: 'assets/imgs/adult/easy/mouse.png',
   }
+]
+}     
+    ];
+
+//    this.currentItems = $filter('filter')(this.items, {'topic':this.topic}) 
+  }
+
+
+
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
   }

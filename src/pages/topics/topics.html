@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar color="secondary">
+      <ion-title>
+        CHOOSE A TOPIC
+      </ion-title>
+      <ion-buttons start>
+          <button ion-button color="light" icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button></ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content style="background-image: url('assets/imgs/SBG4.jpg');
+                    background-attachment: fixed; 
+                    background-size: contain;
+                    background-position : center;" padding>
+  <ion-slides  paginationType="bullets"  effect="cube" >
+    <ion-slide >
+        <br/><br/><br/>
+        <img src="assets/imgs/1.jpg"/><br/><br/>        
+        <button color="secondary" class="buttonT" 
+        round ion-button icon-start  
+        (click)="setTopic('Animals')">
+        <b>CLICK TO CHOOSE ANIMALS</b>
+        </button>
+    </ion-slide>
+    <ion-slide >
+        <br/><br/><br/>
+        <img src="assets/imgs/2.jpg"/><br/><br/>        
+        <button color="secondary" class="buttonT" 
+        round ion-button icon-start  
+        (click)="setTopic('Numbers & Letters')">
+        <b>CLICK TO CHOOSE NUMBERS & LETTERS</b>
+        </button>
+    </ion-slide>
+    <ion-slide >
+        <br/><br/><br/>
+        <img src="assets/imgs/3.jpg"/><br/><br/>        
+        <button color="secondary" class="buttonT" 
+        round ion-button icon-start  
+        (click)="setTopic('Objects')">
+        <b>CLICK TO CHOOSE OBJECTS</b>
+        </button>
+    </ion-slide>
+    <ion-slide >
+        <br/><br/><br/>
+        <img src="assets/imgs/4.jpg"/><br/><br/>        
+        <button color="secondary" class="buttonT" 
+        round ion-button icon-start  
+        (click)="setTopic('Fruits')">
+        <b>CLICK TO CHOOSE FRUITS & VEGETABLES</b>
+        </button>
+    </ion-slide>
+    <ion-slide >
+        <br/><br/><br/>
+        <img src="assets/imgs/5.jpg"/><br/><br/>        
+        <button color="secondary" class="buttonT" 
+        round ion-button icon-start  
+        (click)="setTopic('Jobs')">
+        <b>CLICK TO CHOOSE JOBS</b>
+        </button>
+    </ion-slide>
+  </ion-slides>
+  
+</ion-content>
