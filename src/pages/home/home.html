@@ -1,22 +1,23 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>
      GUESS GAME
     </ion-title>
     <ion-buttons start>
-        <button ion-button color="dark" icon-only menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button></ion-buttons>
+        <button ion-button color="white" icon-only menuToggle>
+          <ion-icon name="apps"></ion-icon>        
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content style="background-image: url('../../assets/imgs/homePageBG1.jpg');
+<ion-content style="background-image: url('assets/imgs/homePageBG7.jpg');
                     background-attachment: fixed; 
                     background-size: contain;
                     background-position : center;
 
 ">
 <ion-fab left top>
-    <button ion-fab color="secondary" id="socialMedia"><ion-icon name="arrow-dropright"></ion-icon></button>
+    <button ion-fab color="dark" id="socialMedia" style="width:45px;height:45px;"><ion-icon name="arrow-dropright"></ion-icon></button>
     <ion-fab-list side="right">
       <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
       <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
@@ -25,7 +26,7 @@
     </ion-fab-list>
   </ion-fab>
     <ion-buttons>
-        <button ion-button round color="secondary" [navPush]="levelPage" id="cool-button-div">
+        <button ion-button round color="dark" (click)="openPage()" id="cool-button-div">
             &nbsp;       
         START GAME
         </button>

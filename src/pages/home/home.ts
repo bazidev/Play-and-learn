@@ -8,10 +8,12 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  levelPage = LevelPage;
+  
   constructor(public navCtrl: NavController) {
 
+  }
+  openPage(){
+    this.navCtrl.push(LevelPage);
   }
 
 }

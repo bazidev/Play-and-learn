@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar color="dark">
+      <ion-title>
+       GUESS GAME
+      </ion-title>
+      <ion-buttons start>
+          <button ion-button color="dark" icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button></ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content style="background-image: url('assets/imgs/BGG.jpg');
+                      background-attachment: fixed; 
+                      background-size: contain;
+                      background-position : center;" padding>
+  <ion-label>
+    <h5>&nbsp;<b>Level</b> : {{ level }} <br/>&nbsp;<b>Topic</b> : {{ topic }}</h5>
+  </ion-label>     
+  <ion-slides >
+    <ion-slide *ngFor="let item of items">
+      <page-slid [imagePath]="item.image" [word]="item.word"></page-slid>
+    </ion-slide>
+  </ion-slides>
+  
+   <button color="secondary" round ion-button icon-start (click)="startListening()">
+        <ion-icon ios="ios-mic" md="md-mic"></ion-icon>
+        tap to speak
+    </button>
+    <ion-card>
+      <ion-card-header>This is what I understood...</ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let match of matches">
+            {{ match }}
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  <button color="primary" round ion-button icon-start (click)="next()" >
+  <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
+  skip
+</button>
+
+<button color="primary" round ion-button icon-start (click)="next()" [disabled]="!isenabled">
+  <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon>
+  next
+</button>                
+  </ion-content>
+  <ion-footer></ion-footer>    

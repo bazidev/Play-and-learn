@@ -1,4 +1,12 @@
 .scroll-content{overflow-y: hidden;}
+#menu{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;    
+}
+#itemmenu{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;  
+}
 ion-header ion-icon.back-button-icon.icon {
-    color: map-get($colors, dark);
+    color: map-get($colors, white);
 }
