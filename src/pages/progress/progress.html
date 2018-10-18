@@ -1,52 +1,94 @@
 <ion-header>
-    <ion-navbar color="dark">
-      <ion-title>
-       YOUR TOPIC : {{ topic }}
-      </ion-title>
-      <ion-buttons start>
-          <button ion-button color="dark" icon-only menuToggle>
-            <ion-icon name="menu"></ion-icon>
-          </button></ion-buttons>
-    </ion-navbar>
-  </ion-header>
-  <ion-content style="background-image: url('assets/imgs/SBG6.jpg');
+  <ion-navbar color="dark">
+    <ion-title>
+      {{ topic }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button color="dark" icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button></ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background-image: url('assets/imgs/SBG6.jpg');
                       background-attachment: fixed; 
                       background-size: contain;
-                      background-position : center;" padding>
-  <ion-label>
-    <h4>
-      <b>TOPIC</b> : {{ topic }}<br/>
-      <b>SCORE</b> : {{ topic }}<br/>
-    </h4>
-  </ion-label>     
-  <ion-slides paginationType="fraction" pager>
-    <ion-slide *ngFor="let item of items ">
-      <page-slid [imagePath]="item.image" [word]="item.word"></page-slid>
+                      background-position : center;"
+  padding>
+
+  <ion-item color="green">
+    <ion-icon name="ios-ribbon" item-start></ion-icon>
+    Score
+    <ion-badge item-center>{{ score }}</ion-badge>
+    <button ion-button outline item-right (click)="getFirstLetters()">
+      <ion-icon ios="ios-help-buoy" md="md-help-buoy"></ion-icon>
+      &nbsp;help
+    </button>
+  </ion-item>
+
+  <ion-slides >
+
+      
+        
+    <ion-slide *ngFor="let slid of currentItems">    
+
+        <ion-card>
+        <ion-img width="100" height="100"   [src]="slid.image"> </ion-img>
+
+      </ion-card>
+        
     </ion-slide>
   </ion-slides>
-  
-   <button color="secondary" round ion-button icon-start (click)="startListening()">
-        <ion-icon ios="ios-mic" md="md-mic"></ion-icon>
-        tap to speak
-    </button>
-    <ion-card>
-      <ion-card-header>This is what I understood...</ion-card-header>
-      <ion-card-content>
-        <ion-list>
-          <ion-item *ngFor="let match of matches">
-            {{ match }}
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-  <button color="primary" round ion-button icon-start (click)="next()" >
-  <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
-  skip
-</button>
 
-<button color="primary" round ion-button icon-start (click)="next()" [disabled]="!isenabled">
-  <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon>
-  next
-</button>                
-  </ion-content>
-  <ion-footer></ion-footer>    
+
+<ion-card>
+  {{wordHelp}}
+</ion-card>
+        
+
+  <!--for Debugging-->
+  <!-- 
+  <ion-card>
+    <ion-card-header>This is what I understood...</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let match of matches">
+          {{ match }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+ -->
+
+</ion-content>
+
+
+
+
+
+
+
+<ion-footer>
+
+  <button full color="secondary" position="center" ion-button icon-start (click)="startListening()">
+    <ion-icon ios="ios-mic" md="md-mic"></ion-icon>
+    tap to speak
+  </button>
+
+  <ion-toolbar>
+
+    <button color="primary" ion-button icon-start (click)="next()" [disabled]="!isenabled">
+      <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
+      next
+    </button>
+
+    <ion-buttons end>
+      <button color="primary" ion-button icon-start (click)="skip()">
+        <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon>
+        skip
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-footer>
