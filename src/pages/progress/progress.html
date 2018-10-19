@@ -11,41 +11,29 @@
 </ion-header>
 
 
-<ion-content style="background-image: url('assets/imgs/SBG6.jpg');
+<ion-content style="background-image: url('assets/imgs/test.jpg');
                       background-attachment: fixed; 
                       background-size: contain;
                       background-position : center;"
   padding>
-
-  <ion-item color="green">
+  <ion-item color="light">
     <ion-icon name="ios-ribbon" item-start></ion-icon>
-    Score
-    <ion-badge item-center>{{ score }}</ion-badge>
-    <button ion-button outline item-right (click)="getFirstLetters()">
-      <ion-icon ios="ios-help-buoy" md="md-help-buoy"></ion-icon>
-      &nbsp;help
-    </button>
+        <b style="font-size: 17px;">
+        Your score is : </b>&nbsp;
+        <ion-badge item-center>{{ score }}</ion-badge>
+        <button ion-button color="secondary" item-right (click)="presentAlert()">
+          <b style="font-size: 16px;">&nbsp; HELP &nbsp;</b>
+        </button>
   </ion-item>
-
-  <ion-slides >
-
-      
-        
+    <ion-slides style="margin-top:5%;">
     <ion-slide *ngFor="let slid of currentItems">    
-
         <ion-card>
-        <ion-img width="100" height="100"   [src]="slid.image"> </ion-img>
-
-      </ion-card>
-        
+                <img style="width:100%;
+                            border:1px solid lawngreen;
+                            box-shadow:1px 1px 1px; " src={{slid.image}} />
+        </ion-card>
     </ion-slide>
   </ion-slides>
-
-
-<ion-card>
-  {{wordHelp}}
-</ion-card>
-        
 
   <!--for Debugging-->
   <!-- 
@@ -66,29 +54,24 @@
 
 
 
-
-
-
 <ion-footer>
 
-  <button full color="secondary" position="center" ion-button icon-start (click)="startListening()">
+  <button class="bstyle" ion-button round color="secondary" ion-button icon-start (click)="startListening()">
     <ion-icon ios="ios-mic" md="md-mic"></ion-icon>
-    tap to speak
+    Tap to speak
   </button>
 
-  <ion-toolbar>
 
-    <button color="primary" ion-button icon-start (click)="next()" [disabled]="!isenabled">
+    <button class="inlineit"style="float:left;margin-bottom:5%;" color="light" ion-button icon-start (click)="next()" [disabled]="!isenabled">
       <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
-      next
+      Next
     </button>
 
     <ion-buttons end>
-      <button color="primary" ion-button icon-start (click)="skip()">
+      <button class="inlineit"style="float:right;margin-bottom:5%;" color="light" ion-button icon-start (click)="skip()">
         <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle"></ion-icon>
-        skip
+        Skip
       </button>
     </ion-buttons>
 
-  </ion-toolbar>
 </ion-footer>

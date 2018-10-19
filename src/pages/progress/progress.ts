@@ -1,6 +1,6 @@
 import { SlidPage } from './../slid/slid';
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform ,AlertController} from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
@@ -22,16 +22,32 @@ export class ProgressPage {
   currentItems:any[];
   animals = [
         {
-          word: 'penguin',
-          image: 'assets/imgs/content/Animals/penguin.png',
+          word: 'Cat',
+          image: 'assets/imgs/content/Animals/cat.png',
         },
         {
-          word: 'chicken',
-          image: 'assets/imgs/content/Animals/chicken.jpg',
+          word: 'Chicken',
+          image: 'assets/imgs/content/Animals/chicken.png',
         },
         {
-          word: 'penguin',
-          image: 'assets/imgs/content/Animals/mouse.png',
+          word: 'Dog',
+          image: 'assets/imgs/content/Animals/dog.png',
+        },
+        {
+          word: 'Rabbit',
+          image: 'assets/imgs/content/Animals/rabbit.png',
+        },
+        {
+          word: 'Lion',
+          image: 'assets/imgs/content/Animals/lion.png',
+        },
+        {
+          word: 'Horse',
+          image: 'assets/imgs/content/Animals/horse.png',
+        },
+        {
+          word: 'Elephant',
+          image: 'assets/imgs/content/Animals/elephant.png',
         }
   
      
@@ -55,7 +71,7 @@ export class ProgressPage {
   matches: String[];
   isRecording = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) {
+  constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) {
     this.topic = this.navParams.get('topic');
     console.log(this.topic);
 
@@ -123,13 +139,25 @@ export class ProgressPage {
     this.mark=2;
   }
 
-
-  getFirstLetters()
-  {
+  presentAlert() {
     this.mark =1;
-    this.wordHelp = String(this.currentItems[this.index].word).substr(0,3)+this.currentItems[this.index].word.slice(-this.currentItems[this.index].word.length+3).replace(/./g, "*");
+    this.wordHelp = String(this.currentItems[this.index].word)
+                    .substr(0,3)+this.currentItems[this.index].word
+                    .slice(-this.currentItems[this.index].word.length+3)
+                    .replace(/./g, "*");
+    let alert = this.alertCtrl.create({
+      title: 'The first three letters:',
+      subTitle: "<b>" + this.wordHelp + "</b>",
+      buttons: ['Close']
+    });
+    this.mark =1;
+    this.wordHelp = String(this.currentItems[this.index].word)
+                    .substr(0,3)+this.currentItems[this.index].word
+                    .slice(-this.currentItems[this.index].word.length+3)
+                    .replace(/./g, "*");
+    alert.present();
   }
-
+  
   wordValidation() {
     if (this.matches.indexOf(this.currentItems[this.index].word) > -1) {
       this.matches.push("valid");
