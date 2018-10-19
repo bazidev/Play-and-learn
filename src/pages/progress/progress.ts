@@ -1,4 +1,4 @@
-import { SlidPage } from './../slid/slid';
+import { TopicsPage } from './../topics/topics';
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavController, NavParams, Platform ,AlertController} from 'ionic-angular';
 import { ViewChild } from '@angular/core';
@@ -45,6 +45,14 @@ export class ProgressPage {
           word: 'Horse',
           image: 'assets/imgs/content/Animals/horse.png',
         },
+        /* {
+          word: 'Cow',
+          image: 'assets/imgs/content/Animals/cow.png',
+        }, */
+        {
+          word: 'Giraffe',
+          image: 'assets/imgs/content/Animals/giraffe.png',
+        },
         {
           word: 'Elephant',
           image: 'assets/imgs/content/Animals/elephant.png',
@@ -53,20 +61,175 @@ export class ProgressPage {
      
   ];
 
-  numbers=[
+  objects=[
         {
-          word: 'chicken',
-          image: 'assets/imgs/content/Animals/chicken.jpg',
+          word: 'Table',
+          image: 'assets/imgs/content/Object/table.png',
         },
         {
-          word: 'chicken',
-          image: 'assets/imgs/content/Animals/chicken.jpg',
+          word: 'Car',
+          image: 'assets/imgs/content/Object/car.png',
         },
         {
-          word: 'penguin',
-          image: 'assets/imgs/content/Animals/mouse.png',
+          word: 'Bus',
+          image: 'assets/imgs/content/Object/bus.png',
+        },
+        {
+          word: 'Door',
+          image: 'assets/imgs/content/Object/door.png',
+        },
+        {
+          word: 'Computer',
+          image: 'assets/imgs/content/Object/computer.png',
+        },
+        {
+          word: 'Keys',
+          image: 'assets/imgs/content/Object/Key.png',
+        },
+        {
+          word: 'Desk',
+          image: 'assets/imgs/content/Object/bureau.png',
+        },
+        {
+          word: 'Chair',
+          image: 'assets/imgs/content/Object/chair.png',
         }
  
+  ];
+
+  numbersLetters=[
+    {
+      word: 'A',
+      image: 'assets/imgs/content/Letters&Numbres/a.png',
+    },
+    {
+      word: '10',
+      image: 'assets/imgs/content/Letters&Numbres/10.png',
+    },
+    {
+      word: 'D',
+      image: 'assets/imgs/content/Letters&Numbres/d.png',
+    },
+    {
+      word: 'Z',
+      image: 'assets/imgs/content/Letters&Numbres/z.png',
+    },
+    {
+      word: 'W',
+      image: 'assets/imgs/content/Letters&Numbres/w.png',
+    },
+    {
+      word: '7',
+      image: 'assets/imgs/content/Letters&Numbres/7.png',
+    },
+    {
+      word: '8',
+      image: 'assets/imgs/content/Letters&Numbres/8.png',
+    },
+    {
+      word: 'B',
+      image: 'assets/imgs/content/Letters&Numbres/b.png',
+    },
+    {
+      word: 'K',
+      image: 'assets/imgs/content/Letters&Numbres/k.png',
+    },
+    {
+      word: '6',
+      image: 'assets/imgs/content/Letters&Numbres/6.png',
+    },
+    {
+      word: '5',
+      image: 'assets/imgs/content/Letters&Numbres/5.png',
+    },
+    {
+      word: '1',
+      image: 'assets/imgs/content/Letters&Numbres/1.png',
+    },
+    {
+      word: 'T',
+      image: 'assets/imgs/content/Letters&Numbres/t.png',
+    },
+    {
+      word: '2',
+      image: 'assets/imgs/content/Letters&Numbres/2.png',
+    }
+
+  ];
+  
+  fruits=[
+    {
+      word: 'Appel',
+      image: 'assets/imgs/content/Fruites/Appel.png',
+    },
+    {
+      word: 'Ananas',
+      image: 'assets/imgs/content/Fruites/ananas.png',
+    },
+    {
+      word: 'Tomato',
+      image: 'assets/imgs/content/Fruites/tomato.png',
+    },
+    {
+      word: 'Orange',
+      image: 'assets/imgs/content/Fruites/orange.png',
+    },
+    {
+      word: 'Onion',
+      image: 'assets/imgs/content/Fruites/onion.png',
+    },
+    {
+      word: 'Strawberry',
+      image: 'assets/imgs/content/Fruites/fraisier.png',
+    },
+    {
+      word: 'Potato',
+      image: 'assets/imgs/content/Fruites/potato.png',
+    },
+    {
+      word: 'Garlic',
+      image: 'assets/imgs/content/Fruites/garlic.png',
+    },
+    {
+      word: 'Pomegranate',
+      image: 'assets/imgs/content/Fruites/grenade.png',
+    },
+    {
+      word: 'Carrot',
+      image: 'assets/imgs/content/Fruites/carrot.png',
+    }
+
+  ];
+  jobs=[
+    {
+      word: 'Doctor',
+      image: 'assets/imgs/content/Jobs/doctor.png',
+    },
+    {
+      word: 'Nurse',
+      image: 'assets/imgs/content/Jobs/nurse.png',
+    },
+    {
+      word: 'Officer',
+      image: 'assets/imgs/content/Jobs/officier.png',
+    },
+    {
+      word: 'Pilot',
+      image: 'assets/imgs/content/Jobs/pilot.png',
+    },
+    {
+      word: 'Engineer',
+      image: 'assets/imgs/content/Jobs/engineer.png',
+    },
+    {
+      word: 'Secretary',
+      image: 'assets/imgs/content/Jobs/secretarire.png',
+    },
+    {
+      word: 'Teacher',
+      image: 'assets/imgs/content/Jobs/teacher.png',
+    }
+
   ];
   matches: String[];
   isRecording = false;
@@ -81,11 +244,26 @@ export class ProgressPage {
          this.currentItems=this.animals;
          break; 
       } 
-      case "Numbers": { 
-        this.currentItems=this.numbers;
+      case "Numbers/Letters": { 
+        this.currentItems=this.numbersLetters;
          //statements; 
          break; 
-      } 
+      }
+      case "Fruits/Vegetables": { 
+        this.currentItems=this.fruits;
+         //statements; 
+         break; 
+      }
+      case "Jobs": { 
+        this.currentItems=this.jobs;
+         //statements; 
+         break; 
+      }
+      case "Objects": { 
+        this.currentItems=this.objects;
+         //statements; 
+         break; 
+      }  
       default: { 
         this.currentItems=this.animals;
          //statements; 
@@ -138,7 +316,9 @@ export class ProgressPage {
     this.slides.lockSwipes(true);
     this.mark=2;
   }
-
+  backToMenu(){
+    this.navCtrl.push(TopicsPage);
+  }
   presentAlert() {
     this.mark =1;
     this.wordHelp = String(this.currentItems[this.index].word)

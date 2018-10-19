@@ -9,7 +9,6 @@ import {SpeechRecognition} from "@ionic-native/speech-recognition";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LevelPage } from '../pages/level/level';
-import { SlidPage } from './../pages/slid/slid';
 import { TopicsPage } from '../pages/topics/topics';
 
 
@@ -19,7 +18,6 @@ import { TopicsPage } from '../pages/topics/topics';
     HomePage,
     LevelPage,
     ProgressPage,
-    SlidPage,
     TopicsPage
   ],
   imports: [
@@ -39,14 +37,12 @@ import { TopicsPage } from '../pages/topics/topics';
     HomePage,
     LevelPage,
     ProgressPage,
-    SlidPage,
     TopicsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     SpeechRecognition,
-    SlidPage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

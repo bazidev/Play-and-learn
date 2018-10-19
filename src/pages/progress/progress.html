@@ -2,11 +2,15 @@
   <ion-navbar color="dark">
     <ion-title>
       {{ topic }}
+      <button ion-button round  small strong color="light"
+      style="float:right;"
+      (click)="backToMenu()"
+      >
+    End Game</button>
     </ion-title>
-    <ion-buttons start>
-      <button ion-button color="dark" icon-only menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button></ion-buttons>
+
+
+    
   </ion-navbar>
 </ion-header>
 
