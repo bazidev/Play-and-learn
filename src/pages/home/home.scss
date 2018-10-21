@@ -6,8 +6,28 @@ page-home {
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size:16px;  
         margin:auto;
-        margin-top:80vh;
-        margin-left:8%;
+        margin-top:79vh;
+        margin-left:2%;
         border:5px solid white;
     }
+    @-webkit-keyframes bounce {
+        0% {
+    transform: scale(1,1) translate(0px, 0px);
+  }
+  
+
+
+  50%{
+    transform: scale(1,1.1) translate(0px, 0px); 
+  }
+  
+ 80% {
+    transform: scale(1,1) translate(0px, 0px);
+  }
+}
+
+.bounce {
+      text-align:center;
+     -webkit-animation: bounce 2.5s infinite;
+}
 }

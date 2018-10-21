@@ -1,5 +1,4 @@
 import { TopicsPage } from './../topics/topics';
-import { LevelPage } from './../level/level';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 

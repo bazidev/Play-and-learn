@@ -1,10 +1,11 @@
 import { TopicsPage } from './../topics/topics';
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { NavController, NavParams, Platform ,AlertController} from 'ionic-angular';
+import { NavController, NavParams, Platform ,AlertController, ToastController} from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { EndPage } from '../end/end';
 
 @Component({
   selector: 'page-progress',
@@ -13,7 +14,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class ProgressPage {
   @ViewChild(Slides) slides: Slides;
   level: string;
-  mark : number =2; // mark for current word by default 2 , if help used 1 , wrong 0
+  mark : number =1; // mark for current word by default 2 , if help used 1 , wrong 0
   score: number = 0; // score
   topic: string;
   index: number = 0;
@@ -22,39 +23,39 @@ export class ProgressPage {
   currentItems:any[];
   animals = [
         {
-          word: 'Cat',
+          word: 'chat',
           image: 'assets/imgs/content/Animals/cat.png',
         },
         {
-          word: 'Chicken',
+          word: 'poulet',
           image: 'assets/imgs/content/Animals/chicken.png',
         },
         {
-          word: 'Dog',
+          word: 'chien',
           image: 'assets/imgs/content/Animals/dog.png',
         },
         {
-          word: 'Rabbit',
+          word: 'lapin',
           image: 'assets/imgs/content/Animals/rabbit.png',
         },
         {
-          word: 'Lion',
+          word: 'lion',
           image: 'assets/imgs/content/Animals/lion.png',
         },
         {
-          word: 'Horse',
+          word: 'cheval',
           image: 'assets/imgs/content/Animals/horse.png',
         },
-        /* {
-          word: 'Cow',
+         {
+          word: 'vache',
           image: 'assets/imgs/content/Animals/cow.png',
-        }, */
+        },
         {
-          word: 'Giraffe',
+          word: 'girafe',
           image: 'assets/imgs/content/Animals/giraffe.png',
         },
         {
-          word: 'Elephant',
+          word: 'éléphant', 
           image: 'assets/imgs/content/Animals/elephant.png',
         }
   
@@ -63,35 +64,35 @@ export class ProgressPage {
 
   objects=[
         {
-          word: 'Table',
+          word: 'table',
           image: 'assets/imgs/content/Object/table.png',
         },
         {
-          word: 'Car',
+          word: 'voiture',
           image: 'assets/imgs/content/Object/car.png',
         },
         {
-          word: 'Bus',
+          word: 'bus',
           image: 'assets/imgs/content/Object/bus.png',
         },
         {
-          word: 'Door',
+          word: 'porte',
           image: 'assets/imgs/content/Object/door.png',
         },
         {
-          word: 'Computer',
+          word: 'ordinateur',
           image: 'assets/imgs/content/Object/computer.png',
         },
         {
-          word: 'Keys',
-          image: 'assets/imgs/content/Object/Key.png',
+          word: 'clé',
+          image: 'assets/imgs/content/Object/key.png',
         },
         {
-          word: 'Desk',
+          word: 'bureau',
           image: 'assets/imgs/content/Object/bureau.png',
         },
         {
-          word: 'Chair',
+          word: 'chaise',
           image: 'assets/imgs/content/Object/chair.png',
         }
  
@@ -99,134 +100,109 @@ export class ProgressPage {
 
   numbersLetters=[
     {
-      word: 'A',
-      image: 'assets/imgs/content/Letters&Numbres/a.png',
+      word: 'v',
+      image: 'assets/imgs/content/Letters&Numbres/v.png',
     },
     {
-      word: '10',
-      image: 'assets/imgs/content/Letters&Numbres/10.png',
-    },
-    {
-      word: 'D',
-      image: 'assets/imgs/content/Letters&Numbres/d.png',
-    },
-    {
-      word: 'Z',
-      image: 'assets/imgs/content/Letters&Numbres/z.png',
-    },
-    {
-      word: 'W',
-      image: 'assets/imgs/content/Letters&Numbres/w.png',
-    },
-    {
-      word: '7',
+      word: 'sept',
       image: 'assets/imgs/content/Letters&Numbres/7.png',
     },
     {
-      word: '8',
-      image: 'assets/imgs/content/Letters&Numbres/8.png',
+      word: 'z',
+      image: 'assets/imgs/content/Letters&Numbres/z.png',
     },
     {
-      word: 'B',
+      word: 'quatre',
+      image: 'assets/imgs/content/Letters&Numbres/4.png',
+    },
+    {
+      word: 'w',
+      image: 'assets/imgs/content/Letters&Numbres/w.png',
+    },
+    {
+      word: 'b',
       image: 'assets/imgs/content/Letters&Numbres/b.png',
     },
     {
-      word: 'K',
-      image: 'assets/imgs/content/Letters&Numbres/k.png',
-    },
-    {
-      word: '6',
-      image: 'assets/imgs/content/Letters&Numbres/6.png',
-    },
-    {
-      word: '5',
-      image: 'assets/imgs/content/Letters&Numbres/5.png',
-    },
-    {
-      word: '1',
+      word: 'un',
       image: 'assets/imgs/content/Letters&Numbres/1.png',
     },
     {
-      word: 'T',
-      image: 'assets/imgs/content/Letters&Numbres/t.png',
+      word: 'six',
+      image: 'assets/imgs/content/Letters&Numbres/6.png',
     },
     {
-      word: '2',
-      image: 'assets/imgs/content/Letters&Numbres/2.png',
-    }
-
+      word: 'cinq',
+      image: 'assets/imgs/content/Letters&Numbres/5.png',
+    },
   ];
   
   fruits=[
     {
-      word: 'Appel',
+      word: 'pomme',
       image: 'assets/imgs/content/Fruites/Appel.png',
     },
     {
-      word: 'Ananas',
+      word: 'ananas',
       image: 'assets/imgs/content/Fruites/ananas.png',
     },
     {
-      word: 'Tomato',
+      word: 'tomate',
       image: 'assets/imgs/content/Fruites/tomato.png',
     },
     {
-      word: 'Orange',
+      word: 'orange',
       image: 'assets/imgs/content/Fruites/orange.png',
     },
     {
-      word: 'Onion',
+      word: 'onion',
       image: 'assets/imgs/content/Fruites/onion.png',
     },
     {
-      word: 'Strawberry',
+      word: 'fraise',
       image: 'assets/imgs/content/Fruites/fraisier.png',
     },
     {
-      word: 'Potato',
+      word: 'pomme de terre',
       image: 'assets/imgs/content/Fruites/potato.png',
     },
     {
-      word: 'Garlic',
-      image: 'assets/imgs/content/Fruites/garlic.png',
-    },
-    {
-      word: 'Pomegranate',
+      word: 'grenade',
       image: 'assets/imgs/content/Fruites/grenade.png',
     },
     {
-      word: 'Carrot',
+      word: 'carotte',
       image: 'assets/imgs/content/Fruites/carrot.png',
     }
 
   ];
   jobs=[
     {
-      word: 'Doctor',
+      word: 'docteur',
       image: 'assets/imgs/content/Jobs/doctor.png',
     },
     {
-      word: 'Nurse',
+      word: 'infirmier',
       image: 'assets/imgs/content/Jobs/nurse.png',
     },
     {
-      word: 'Officer',
+      word: 'policier',
       image: 'assets/imgs/content/Jobs/officier.png',
     },
     {
-      word: 'Pilot',
+      word: 'pilote',
       image: 'assets/imgs/content/Jobs/pilot.png',
     },
     {
-      word: 'Engineer',
+      word: 'ingénieur',
       image: 'assets/imgs/content/Jobs/engineer.png',
     },
     {
-      word: 'Secretary',
+      word: 'fonctionnaire',
       image: 'assets/imgs/content/Jobs/secretarire.png',
     },
     {
-      word: 'Teacher',
+      word: 'professeur',
       image: 'assets/imgs/content/Jobs/teacher.png',
     }
 
@@ -234,32 +210,32 @@ export class ProgressPage {
   matches: String[];
   isRecording = false;
 
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) {
+  constructor(public navCtrl: NavController,public toastCtrl:ToastController ,private alertCtrl: AlertController, public navParams: NavParams, private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) {
     this.topic = this.navParams.get('topic');
     console.log(this.topic);
 
     switch(this.topic) { 
-      case "Animals": { 
+      case "Animaux": { 
          //statements; 
          this.currentItems=this.animals;
          break; 
       } 
-      case "Numbers/Letters": { 
+      case "Nombres et lettres": { 
         this.currentItems=this.numbersLetters;
          //statements; 
          break; 
       }
-      case "Fruits/Vegetables": { 
+      case "Fruits et légumes": { 
         this.currentItems=this.fruits;
          //statements; 
          break; 
       }
-      case "Jobs": { 
+      case "Métiers": { 
         this.currentItems=this.jobs;
          //statements; 
          break; 
       }
-      case "Objects": { 
+      case "Objets": { 
         this.currentItems=this.objects;
          //statements; 
          break; 
@@ -289,6 +265,10 @@ export class ProgressPage {
     if(this.index== this.currentItems.length)
     {
       //go to end page
+      this.navCtrl.push(EndPage,{
+        score:''+this.score,
+        topic:''+this.topic
+      });
       return;
     }
     this.index++;
@@ -306,19 +286,44 @@ export class ProgressPage {
     if(this.index== this.currentItems.length)
     {
       console.log("end");
-      return;
+      
       //go to end page
+      this.navCtrl.push(EndPage,{
+        score:''+this.score,
+        topic:''+this.topic
+      });
+      return;
     }
 
     this.index++;
     this.slides.lockSwipes(false);
     this.slides.slideNext();
     this.slides.lockSwipes(true);
-    this.mark=2;
+    this.mark=1;
   }
   backToMenu(){
-    this.navCtrl.push(TopicsPage);
-  }
+    let alert = this.alertCtrl.create({
+      title: '<b>Voulez vous vraiment terminer cette partie et aller au menu?</b>',
+      message: '',
+      buttons: [
+        
+        {
+          text: 'Oui',
+          handler: () => {
+            this.navCtrl.push(TopicsPage);
+          }
+        },
+        {
+          text: 'Non',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }  
   presentAlert() {
     this.mark =1;
     this.wordHelp = String(this.currentItems[this.index].word)
@@ -326,9 +331,9 @@ export class ProgressPage {
                     .slice(-this.currentItems[this.index].word.length+3)
                     .replace(/./g, "*");
     let alert = this.alertCtrl.create({
-      title: 'The first three letters:',
+      title: 'Trois premiers lettres:',
       subTitle: "<b>" + this.wordHelp + "</b>",
-      buttons: ['Close']
+      buttons: ["J'ai compris!"]
     });
     this.mark =1;
     this.wordHelp = String(this.currentItems[this.index].word)
@@ -340,10 +345,31 @@ export class ProgressPage {
   
   wordValidation() {
     if (this.matches.indexOf(this.currentItems[this.index].word) > -1) {
-      this.matches.push("valid");
+      this.matches.push("");
       this.isenabled = true;
+        const toast = this.toastCtrl.create({
+          message: " BRAVO +1 ! ",
+          duration: 4000,
+          position:'middle',
+          showCloseButton:true
+        });
+        toast.present();      
     }
-    this.matches.push("not valid");
+    else{
+      let mot:String;
+    for (let entry of this.matches) {
+        mot = entry;
+    }
+    const toast = this.toastCtrl.create({
+      message: "Ce que vous avez dit:"+mot,
+      duration: 4000,
+      position:'middle',
+      showCloseButton:true
+    });
+    toast.present();
+    }
+
+    this.matches.push("");
   }
 
   isIos() {

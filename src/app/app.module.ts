@@ -1,3 +1,4 @@
+import { EndPage } from './../pages/end/end';
 import { ProgressPage } from './../pages/progress/progress';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -8,7 +9,6 @@ import {SpeechRecognition} from "@ionic-native/speech-recognition";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { LevelPage } from '../pages/level/level';
 import { TopicsPage } from '../pages/topics/topics';
 
 
@@ -16,8 +16,8 @@ import { TopicsPage } from '../pages/topics/topics';
   declarations: [
     MyApp,
     HomePage,
-    LevelPage,
     ProgressPage,
+    EndPage,
     TopicsPage
   ],
   imports: [
@@ -35,9 +35,9 @@ import { TopicsPage } from '../pages/topics/topics';
   entryComponents: [
     MyApp,
     HomePage,
-    LevelPage,
     ProgressPage,
-    TopicsPage
+    TopicsPage,
+    EndPage
   ],
   providers: [
     StatusBar,

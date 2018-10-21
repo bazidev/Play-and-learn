@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar color="secondary">
+      <ion-title>
+        Fin de cette partie !
+      </ion-title>
+      <ion-buttons start>
+          <button ion-button color="light" icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button></ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content style="background-image: url('assets/imgs/end.jpg');
+                    background-attachment: fixed; 
+                    background-size: contain;
+                    background-position : center;" padding>
+<h4>Votre score est : {{ score }}<br/>
+    Vous avez joué  : {{ topicName }}<br/></h4>
+<button ion-button color="secondary" strong class="cstyle" (click)="backToSameTopic()" style="float:left;">Réessayer</button>        
+<button ion-button color="secondary" strong class="dstyle" (click)="backToMenuFromEndPage()">Retour au menu</button>
+</ion-content>
