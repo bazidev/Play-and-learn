@@ -6,6 +6,7 @@ import { Slides } from 'ionic-angular';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { EndPage } from '../end/end';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-progress',
@@ -14,7 +15,7 @@ import { EndPage } from '../end/end';
 export class ProgressPage {
   @ViewChild(Slides) slides: Slides;
   level: string;
-  mark : number =1; // mark for current word by default 2 , if help used 1 , wrong 0
+  mark : number =2; // mark for current word by default 2 , if help used 1 , wrong 0
   score: number = 0; // score
   topic: string;
   index: number = 0;
@@ -299,18 +300,18 @@ export class ProgressPage {
     this.slides.lockSwipes(false);
     this.slides.slideNext();
     this.slides.lockSwipes(true);
-    this.mark=1;
+    this.mark=2;
   }
   backToMenu(){
     let alert = this.alertCtrl.create({
-      title: '<b>Voulez vous vraiment terminer cette partie et aller au menu?</b>',
+      title: '<b>Voulez vous vraiment terminer cette partie ?</b>',
       message: '',
       buttons: [
         
         {
           text: 'Oui',
           handler: () => {
-            this.navCtrl.push(TopicsPage);
+            this.navCtrl.push(HomePage);
           }
         },
         {
@@ -331,7 +332,7 @@ export class ProgressPage {
                     .slice(-this.currentItems[this.index].word.length+3)
                     .replace(/./g, "*");
     let alert = this.alertCtrl.create({
-      title: 'Trois premiers lettres:',
+      title: 'Aide :',
       subTitle: "<b>" + this.wordHelp + "</b>",
       buttons: ["J'ai compris!"]
     });
@@ -361,7 +362,9 @@ export class ProgressPage {
         mot = entry;
     }
     const toast = this.toastCtrl.create({
-      message: "Ce que vous avez dit:"+mot,
+      //message: "Ce que vous avez dit:"+mot,
+      message: "Ce que vous avez dit:"+this.matches[0],
+      
       duration: 4000,
       position:'middle',
       showCloseButton:true
